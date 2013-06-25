@@ -196,7 +196,7 @@ $(document).ready(
                             $('#idAllTubes').html(data);
                             $('#idAllTubesCopy').html(html);
                             updateTable();
-                            timer = setTimeout(reloader, 500);
+                            timer = setTimeout(reloader, 2000);
                         }
 					},
 					'type' : 'GET',

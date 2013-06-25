@@ -20,8 +20,8 @@
     </style>
     
     <script>
-    	var url = "./?server=<?php $server ?>";
-    	var contentType = "<?php isset($contentType)?$contentType:'' ?>";
+    	var url = "./index.php?server=<?php echo $server ?>";
+    	var contentType = "<?php isset($contentType) ? $contentType : '' ?>";
     </script>
     
     <link href="./css/bootstrap-responsive.css" rel="stylesheet">
