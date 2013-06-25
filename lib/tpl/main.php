@@ -67,7 +67,7 @@
           
           <div class="nav-collapse">
             <ul class="nav">
-            	<?php if(!empty($server)):?><li class="active"><a href="index.php?server=<?php $server ?>"><?php $server ?></a></li><?php endif; ?>
+            	<?php if(!empty($server)):?><li class="active"><a href="index.php?server=<?php echo $server ?>"><?php echo $server ?></a></li><?php endif; ?>
             </ul>
           </div><!--/.nav-collapse -->
         </div>        
