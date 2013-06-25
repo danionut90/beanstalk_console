@@ -20,8 +20,8 @@
     </style>
     
     <script>
-    	var url = "./?server=<?=$server?>";
-    	var contentType = "<?=isset($contentType)?$contentType:''?>";
+    	var url = "./?server=<?php $server ?>";
+    	var contentType = "<?php isset($contentType)?$contentType:'' ?>";
     </script>
     
     <link href="./css/bootstrap-responsive.css" rel="stylesheet">
@@ -47,7 +47,7 @@
           <a class="brand" href="<?php echo $config['brand']['url'] ?>"><?php echo $config['brand']['name'] ?></a>
           
           <div class="btn-toolbar pull-right" style="margin: 0px; padding: 0px; height: 40px">
-          	<?php if(empty($tube)):?>
+          	<?php if(empty($tube)): ?>
           	<div class="btn-group" style="margin: 0px 21px 0px 0px;">
           		<a class="btn btn-small" href="#" id="autoRefresh"><i class="icon-refresh"></i></a>
           	</div>
@@ -58,16 +58,16 @@
 	              <i class="icon-leaf"></i> Server<span class="caret"></span>
 	            </a>
 	            <ul class="dropdown-menu" id="listServers">
-	            <?php foreach($config['servers'] as $item):?> 
-					<li><a href="./index.php?server=<?=$item?>"><?=$item?></a></li>
-				<?php endforeach?>              
+	            <?php foreach($config['servers'] as $item): ?> 
+					<li><a href="./index.php?server=<?php $item ?>"><?php $item ?></a></li>
+				<?php endforeach ?>              
 	            </ul>
           	</div>
           </div>         
           
           <div class="nav-collapse">
             <ul class="nav">
-            	<?php if(!empty($server)):?><li class="active"><a href="index.php?server=<?=$server?>"><?=$server?></a></li><?php endif;?>
+            	<?php if(!empty($server)):?><li class="active"><a href="index.php?server=<?php $server ?>"><?php $server ?></a></li><?php endif; ?>
             </ul>
           </div><!--/.nav-collapse -->
         </div>        
@@ -85,39 +85,39 @@
 <?php if(!empty($errors)): ?>
 	<h2>Errors</h2>
 	<?php foreach ($errors as $item):?>		
-		<p><?=$item?></p>
+		<p><?php $item ?></p>
 	<?php endforeach;?>	
 	<a href="./index.php"><< back</a>
 <?php else:?>     
-	<?php if(!$tube):?>
+	<?php if(!$tube): ?>
 	
 	<!-- Table All Tube -->
 	<div id="idAllTubes">	
-		<?php require_once '../lib/tpl/allTubes.php';?>
+		<?php require_once '../lib/tpl/allTubes.php'; ?>
 	</div>
 	<div id="idAllTubesCopy" style="display:none"></div>
 	<!-- End Table All Tube -->
 	
-	<?php elseif(!in_array($tube,$tubes)):?>
+	<?php elseif(!in_array($tube,$tubes)): ?>
 	
 	<!-- Tube not found -->
-		<?=sprintf('Tube "%s" not found or it is empty',$tube)?>
-		<br><br><a href="./index.php?server=<?=$server?>"> << back </a>
+		<?php sprintf('Tube "%s" not found or it is empty',$tube) ?>
+		<br><br><a href="./index.php?server=<?php $server ?>"> << back </a>
 	<!-- End Tube not found -->
 	 
-	<?php else:?>
+	<?php else: ?>
 	
 	<!-- Table current Tube -->
-		<?php require_once '../lib/tpl/currentTube.php';?>
+		<?php require_once '../lib/tpl/currentTube.php'; ?>
 	<!-- End Table current Tube -->
 	
-	<?php endif;?>	
+	<?php endif; ?>	
 	
 	
 	<!-- Modal window add job -->
-	<?php require_once '../lib/tpl/modalAddJob.php';?>
+	<?php require_once '../lib/tpl/modalAddJob.php'; ?>
 	<!-- End Modal window add job -->
-<?php endif;?>
+<?php endif; ?>
     <!-- Le javascript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
