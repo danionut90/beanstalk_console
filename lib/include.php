@@ -9,9 +9,8 @@ function __autoload( $class )
 	require_once str_replace( '_', '/', $class ) . '.php';
 }
 
+require_once 'config.php';
 require_once 'BeanstalkInterface.class.php';
-
-$config = array( 'servers' => array( /* Write here list of your servers */ ) );
 
 $server = !empty( $_GET[ 'server' ] ) ? $_GET[ 'server' ] : '';
 $action = !empty( $_GET[ 'action' ] ) ? $_GET[ 'action' ] : '';

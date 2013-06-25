@@ -20,8 +20,8 @@
     </style>
     
     <script>
-    	var url = "./index.php?server=<?php echo $server?>";
-    	var contentType = "<?php echo isset($contentType)?$contentType:''?>";
+    	var url = "./?server=<?=$server?>";
+    	var contentType = "<?=isset($contentType)?$contentType:''?>";
     </script>
     
     <link href="./css/bootstrap-responsive.css" rel="stylesheet">
@@ -44,7 +44,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </a>
-          <a class="brand" href="./">Beanstalk console</a>
+          <a class="brand" href="<?php echo $config['brand']['url'] ?>"><?php echo $config['brand']['name'] ?></a>
           
           <div class="btn-toolbar pull-right" style="margin: 0px; padding: 0px; height: 40px">
           	<?php if(empty($tube)):?>
@@ -59,7 +59,7 @@
 	            </a>
 	            <ul class="dropdown-menu" id="listServers">
 	            <?php foreach($config['servers'] as $item):?> 
-					<li><a href="./?server=<?php echo $item?>"><?php echo $item?></a></li>
+					<li><a href="./index.php?server=<?=$item?>"><?=$item?></a></li>
 				<?php endforeach?>              
 	            </ul>
           	</div>
@@ -67,7 +67,7 @@
           
           <div class="nav-collapse">
             <ul class="nav">
-            	<?php if(!empty($server)):?><li class="active"><a href="?server=<?php echo $server?>"><?php echo $server?></a></li><?php endif;?>
+            	<?php if(!empty($server)):?><li class="active"><a href="index.php?server=<?=$server?>"><?=$server?></a></li><?php endif;?>
             </ul>
           </div><!--/.nav-collapse -->
         </div>        
@@ -85,9 +85,9 @@
 <?php if(!empty($errors)): ?>
 	<h2>Errors</h2>
 	<?php foreach ($errors as $item):?>		
-		<p><?php echo $item?></p>
+		<p><?=$item?></p>
 	<?php endforeach;?>	
-	<a href="./"><< back</a>
+	<a href="./index.php"><< back</a>
 <?php else:?>     
 	<?php if(!$tube):?>
 	
@@ -101,8 +101,8 @@
 	<?php elseif(!in_array($tube,$tubes)):?>
 	
 	<!-- Tube not found -->
-		<?php echo sprintf('Tube "%s" not found or it is empty',$tube)?>
-		<br><br><a href="./?server=<?php echo $server?>"> << back </a>
+		<?=sprintf('Tube "%s" not found or it is empty',$tube)?>
+		<br><br><a href="./index.php?server=<?=$server?>"> << back </a>
 	<!-- End Tube not found -->
 	 
 	<?php else:?>
