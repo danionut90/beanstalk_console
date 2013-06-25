@@ -1,0 +1,26 @@
+AuthType Basic
+AuthName "Restricted"
+AuthBasicProvider file
+AuthUserFile /var/www/vacatia.com/current/app/config/apache.htpasswd.conf
+Satisfy any
+require user tech
+
+# Zend Framework
+RewriteEngine On
+RewriteCond %{REQUEST_FILENAME} -s [OR]
+RewriteCond %{REQUEST_FILENAME} -l [OR]
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule ^.*$ - [NC,L]
+RewriteRule ^.*$ index.php [NC,L]
+
+# Security : forbid directory listing
+Options -Indexes
+
+# PHP config
+php_flag magic_quotes_gpc off
+php_flag register_globals off
+php_flag short_open_tag off
+
+# Apache 2 gzip
+SetOutputFilter DEFLATE
+AddOutputFilterByType DEFLATE text/html text/css text/plain text/xml application/x-javascript
